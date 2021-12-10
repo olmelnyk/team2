@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: team2chart
+  labels:
+    helm.sh/chart: team2chart-0.1.0
+    app.kubernetes.io/name: team2chart
+    app.kubernetes.io/version: "6.0.3"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: "52.226.192.87.nip.io"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: team2chart
+                port:
+                  number: 80
